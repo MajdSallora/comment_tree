@@ -35,8 +35,7 @@ class CommentTreeWidget<R, C> extends StatefulWidget {
   });
 
   @override
-  _CommentTreeWidgetState<R, C> createState() =>
-      _CommentTreeWidgetState<R, C>();
+  _CommentTreeWidgetState<R, C> createState() => _CommentTreeWidgetState<R, C>();
 }
 
 class _CommentTreeWidgetState<R, C> extends State<CommentTreeWidget<R, C>> {
@@ -47,17 +46,23 @@ class _CommentTreeWidgetState<R, C> extends State<CommentTreeWidget<R, C>> {
       value: widget.treeThemeData,
       child: Column(
         children: [
-          RootCommentWidget(
-            avatarRoot,
-            widget.contentRoot!(context, widget.root),
-          ),
-          ...widget.replies.map(
-            (e) => CommentChildWidget(
-              isLast: widget.replies.indexOf(e) == (widget.replies.length - 1),
-              avatar: widget.avatarChild!(context, e),
-              avatarRoot: avatarRoot.preferredSize,
-              content: widget.contentChild!(context, e),
+          ExpansionTile(
+            childrenPadding: EdgeInsets.zero,
+            tilePadding: EdgeInsets.zero,
+            title: RootCommentWidget(
+              avatarRoot,
+              widget.contentRoot!(context, widget.root),
             ),
+            children: [
+              ...widget.replies.map(
+                (e) => CommentChildWidget(
+                  isLast: widget.replies.indexOf(e) == (widget.replies.length - 1),
+                  avatar: widget.avatarChild!(context, e),
+                  avatarRoot: avatarRoot.preferredSize,
+                  content: widget.contentChild!(context, e),
+                ),
+              )
+            ],
           )
         ],
       ),
