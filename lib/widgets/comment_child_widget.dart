@@ -20,8 +20,8 @@ class CommentChildWidget extends StatelessWidget {
     bool isRTL = Directionality.of(context) == TextDirection.rtl;
     final EdgeInsets padding = EdgeInsets.only(
         left: isRTL ? 0 : avatarRoot!.width + 8.0,
-        bottom: 8,
-        top: 8,
+        bottom: 0,
+        top: 0,
         right: isRTL ? avatarRoot!.width + 8.0 : 0);
 
     return CustomPaint(
