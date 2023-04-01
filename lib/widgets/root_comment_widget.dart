@@ -10,25 +10,17 @@ class RootCommentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: RootPainter(
-        avatar.preferredSize,
-        context.watch<TreeThemeData>().lineColor,
-        context.watch<TreeThemeData>().lineWidth,
-          Directionality.of(context)
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          avatar,
-          const SizedBox(
-            width: 8,
-          ),
-          Expanded(
-            child: content,
-          )
-        ],
-      ),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        avatar,
+        const SizedBox(
+          width: 8,
+        ),
+        Expanded(
+          child: content,
+        )
+      ],
     );
   }
 }
