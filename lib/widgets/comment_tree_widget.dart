@@ -50,7 +50,10 @@ class _CommentTreeWidgetState<R, C> extends State<CommentTreeWidget<R, C>> {
             data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
             child: ExpansionTile(
               childrenPadding: EdgeInsets.zero,
-              tilePadding: EdgeInsets.zero,
+              tilePadding: EdgeInsets.only(
+                  left: Directionality.of(context) == TextDirection.rtl? 10: 0,
+                  right: Directionality.of(context) == TextDirection.ltr? 10: 0,
+              ),
               title: RootCommentWidget(
                 avatarRoot,
                 widget.contentRoot!(context, widget.root),
